@@ -1,0 +1,76 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+        <app-perfil-lateral></app-perfil-lateral>
+    </div>
+
+    <div class="col-md-8">
+      <h3 class="text-center mb-4 text-alata">Deixe uma mensagem</h3>
+
+      <div class="form-group">
+        <label class="text-alata" for="titulo">Titulo</label>
+        <input type="text" class="form-control" id="titulo" placeholder="Titulo da mensagem">
+      </div>
+
+      <div class="form-group">
+        <label class="text-alata" for="texto">Texto</label>
+        <textarea class="form-control" id="texto" rows="3" placeholder="Digite sua mensagem"></textarea>
+      </div>
+
+      <div class="row d-flex align-items-end">
+        <div class="col-md-6">
+          <div class="form-group m-0">
+            <label class="text-alata" for="tema">Escolha um tema ou <a routerLink="/cadastrar-tema">Cadastre um novo</a></label>
+            <select name="tema" id="tema" class="form-control">
+              <option>Teste</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+          <button type="button" class="btn btn-info w-25">Publicar</button>
+        </div>
+      </div>
+
+      <hr class="mt-5 mb-5">
+      
+      <!--Navegação entre postagens e tema-->
+      <nav class="d-flex justify-content-center">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active text-secondary" id="nav-home-tab" data-toggle="tab" href="#minhas-postagens" role="tab" aria-controls="nav-home" aria-selected="true">Minhas postagens</a>
+
+          <a class="nav-item nav-link text-secondary" id="nav-profile-tab" data-toggle="tab" href="#postagens-temas" role="tab" aria-controls="nav-profile" aria-selected="false">Postagens por tema</a>
+        </div>
+      </nav>
+
+      <div class="tab-content" id="nav-tabContent">
+
+      <!--Pesquisa da aba postagens--->
+        <div class="tab-pane fade show active" id="minhas-postagens" role="tabpanel" aria-labelledby="nav-postagens-tab">
+          <div class="row mt-3 mb-3">
+            <div class="col-md-10 pr-0">
+              <input class="form-control w-100" type="search" placeholder="Pesquisar postagem"
+              aria-label="Pesquisar">
+            </div>
+            <div class="col-md-2 pl-0">
+              <button class="btn btn-success w-100" type="button">Pesquisar</button>
+            </div>
+          </div>
+        </div>
+
+        <!--Pesquisa da aba tema-->
+        <div class="tab-pane fade show active" id="postagens-tema" role="tabpanel"
+        aria-labelledby="nav-presenca-tab">
+          <div class="row mt-3 mb-3">
+            <div class="col-md-10 pr-0">
+              <input class="form-control w-100" type="search" placeholder="Pesquisar tema"
+              aria-label="Pesquisar">
+            </div>
+            <div class="col-md-2 pl-0">
+              <button class="btn btn-success w-100" type="button">Pesquisar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
