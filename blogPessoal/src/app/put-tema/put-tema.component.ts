@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Tema } from '../model/Tema';
 import { TemaService } from '../service/tema.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AlertasService } from '../service/alertas.service';
+
 
 @Component({
   selector: 'app-put-tema',
@@ -15,7 +17,8 @@ export class PutTemaComponent implements OnInit {
   constructor(
     private temaService: TemaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alert: AlertasService
   ) { }
 
   ngOnInit(){
@@ -31,11 +34,17 @@ export class PutTemaComponent implements OnInit {
   }
 
   salvar() {
-    this.temaService.putTema(this.tema).subscribe((resp: Tema) => {
-      this.tema = resp
+    if(this.tema.postagem.length != 0) {
+      this.alert.showAlertDanger('Esse tema não pode ser modificado porque já pertence a uma postagem!')
       this.router.navigate(['/cadastrar-tema'])
-      alert('Tema atualizado com sucesso!')
-    })
+    } else {
+      this.temaService.putTema(this.tema).subscribe((resp: Tema) => {
+        this.tema = resp
+        this.router.navigate(['/cadastrar-tema'])
+        this.alert.showAlertSuccess('Tema atualizado com sucesso!')
+      })
+    }
+    
   }
 
 }
